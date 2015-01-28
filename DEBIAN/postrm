@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ $1 == "remove" ]; then
+	rm -f /Library/Lithium
+	rm -f /var/mobile/Lithium
+	rm -f /var/mobile/Library/Preferences/lithium.plist
+fi

@@ -1,0 +1,11 @@
+Package: lithium
+Name: Lithium
+Depends: mobilesubstrate, preferenceloader, firmware (>= 7.0)
+Version: beta6
+Architecture: iphoneos-arm
+Description: Lightweight battery icon themes
+Maintainer: Constance Bello <me@constancebello.dev>
+Author: Constance Bello <me@constancebello.dev>
+Section: Tweaks
+Conflicts: com.fortysixandtwo.alkaline
+Depiction: http://aarzee.me/cydia/depiction.php?package=lithium
