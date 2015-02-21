@@ -1,10 +1,10 @@
 {
-    entry = {
+	entry = {
 		bundle = LithiumPreferences;
 		cell = PSLinkCell;
 		detail = LithiumListController;
 		icon = "icon.png";
 		isController = 1;
 		label = "Lithium";
-    };
+	};
 }
