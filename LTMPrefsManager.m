@@ -2,7 +2,7 @@
 
 @implementation LTMPrefsManager
 
-@synthesize enabled = _enabled, script = _script, theme = _theme;//, batteryView = _batteryView, data = _data;
+@synthesize enabled = _enabled, script = _script, theme = _theme, batteryView = _batteryView, data = _data;
 static LTMPrefsManager *sharedManager;
 
 + (instancetype)sharedManager {
@@ -34,9 +34,9 @@ static LTMPrefsManager *sharedManager;
 
 - (void)dealloc {
 	[_script release];
-	//[_batteryView release];
+	[_batteryView release];
 	[_theme release];
-	//[_data release];
+	[_data release];
 	[super dealloc];
 }
 
