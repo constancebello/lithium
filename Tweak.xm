@@ -24,8 +24,6 @@ static void notificationCallback(CFNotificationCenterRef center, void *observer,
 	[invocation setArgument:&(originalData) atIndex:2];
 	[invocation setArgument:0 atIndex:3];
 	[invocation performSelector:@selector(invoke) withObject:nil afterDelay:0];*/
-	[n release];
-	[theme release];
 	/*
 	[composedData release];
 	[originalData release];*/

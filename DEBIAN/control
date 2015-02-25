@@ -1,7 +1,7 @@
 Package: lithium
 Name: Lithium
 Depends: mobilesubstrate, preferenceloader, firmware (>= 7.0)
-Version: 0.9
+Version: 0.9-1
 Architecture: iphoneos-arm
 Description: Lightweight battery icon themes
 Maintainer: Constance Bello <me@constancebello.dev>
