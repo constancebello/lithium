@@ -11,24 +11,14 @@ static void notificationCallback(CFNotificationCenterRef center, void *observer,
 	NSNumber *n = (NSNumber*)[[NSUserDefaults standardUserDefaults] objectForKey:@"lithiumEnabled" inDomain:@"lithium"];
 	if(n) [LTMPrefsManager sharedManager].enabled = [n boolValue];
 	NSString *theme = [[NSUserDefaults standardUserDefaults] objectForKey:@"lithiumTheme" inDomain:@"lithium"];
-	if(theme) [LTMPrefsManager sharedManager].theme = (NSMutableString*)theme;
-	/*
+	if(theme) [LTMPrefsManager sharedManager].theme = (NSMutableString*)theme;/*
 	SCD_Struct_UI69 *originalRawData = [[LTMPrefsManager sharedManager].data rawData];
 	SCD_Struct_UI69 *newRawData = originalRawData;
-	newRawData->batteryState = 1 - originalRawData->batteryState;
+	newRawData->batteryState = originalRawData->batteryState == 0 ? 1 : 0;
 	UIStatusBarComposedData *composedData = [[%c(UIStatusBarComposedData) alloc] initWithRawData:newRawData];
 	UIStatusBarComposedData *originalData = [LTMPrefsManager sharedManager].data;
-	[[LTMPrefsManager sharedManager].batteryView updateForNewData:composedData actions:9];
-	[[LTMPrefsManager sharedManager].batteryView updateForNewData:originalData actions:9];*/
-	/*
-	SEL selector = NSSelectorFromString(@"updateForNewData:actions:");
-	NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[[LTMPrefsManager sharedManager].batteryView methodSignatureForSelector:selector]];
-	[invocation setSelector:selector];
-	[invocation setTarget:[LTMPrefsManager sharedManager].batteryView];
-	[invocation setArgument:&(originalData) atIndex:2];
-	[invocation setArgument:0 atIndex:3];
-	[invocation performSelector:@selector(invoke) withObject:nil afterDelay:0];*/
-	// [composedData release];
+	[[LTMPrefsManager sharedManager].batteryView updateForNewData:composedData actions:0];
+	[[LTMPrefsManager sharedManager].batteryView updateForNewData:originalData actions:0];*/
 }
 
 %ctor {

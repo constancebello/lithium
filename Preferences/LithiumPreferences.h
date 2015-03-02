@@ -10,7 +10,6 @@
 @end
 
 @interface LTMListItemsController : PSListItemsController
-
 @end
 
 @interface PSListController (SettingsKit)

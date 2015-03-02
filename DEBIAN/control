@@ -1,7 +1,7 @@
 Package: lithium.beta
 Name: Lithium Beta
 Depends: mobilesubstrate, preferenceloader, firmware (>= 7.0)
-Version: 0.9.1b1
+Version: 0.9.1b2
 Architecture: iphoneos-arm
 Description: Lightweight battery icon themes (beta)
 Maintainer: Constance Bello <me@constancebello.dev>

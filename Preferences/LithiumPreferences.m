@@ -55,9 +55,10 @@ static CGFloat largestWidth;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
 	cell.imageView.image = [[listController images] objectForKey:cell.textLabel.text];
-	cell.imageView.frame = cell.imageView.bounds = CGRectMake(0, 0, largestWidth, 20);
-	cell.imageView.center = CGPointMake(largestWidth / 2, 10);
-	[cell.imageView setContentMode:UIViewContentModeCenter];
+	UIGraphicsBeginImageContextWithOptions(CGSizeMake(largestWidth, 20), NO, [UIScreen mainScreen].scale);
+	[cell.imageView.image drawInRect:CGRectMake(floor((largestWidth - cell.imageView.image.size.width) / 2), floor((20 - cell.imageView.image.size.height) / 2), cell.imageView.image.size.width, cell.imageView.image.size.height)];
+	cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+	UIGraphicsEndImageContext();
 	return cell;
 }
 
