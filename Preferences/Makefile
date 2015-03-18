@@ -5,7 +5,7 @@ include ../theos/makefiles/common.mk
 
 BUNDLE_NAME = LithiumPreferences
 LithiumPreferences_FILES = LithiumPreferences.m
-LithiumPreferences_FRAMEWORKS = UIKit Foundation
+LithiumPreferences_FRAMEWORKS = UIKit Foundation CoreGraphics
 LithiumPreferences_PRIVATE_FRAMEWORKS = Preferences
 
 include $(THEOS_MAKE_PATH)/bundle.mk

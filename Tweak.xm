@@ -7,26 +7,18 @@
 @end
 
 static void notificationCallback(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {
+	if(![LTMPrefsManager sharedManager].batteryView) return;
 	NSNumber *n = (NSNumber*)[[NSUserDefaults standardUserDefaults] objectForKey:@"lithiumEnabled" inDomain:@"lithium"];
 	if(n) [LTMPrefsManager sharedManager].enabled = [n boolValue];
 	NSString *theme = [[NSUserDefaults standardUserDefaults] objectForKey:@"lithiumTheme" inDomain:@"lithium"];
-	if(theme) [LTMPrefsManager sharedManager].theme = (NSMutableString*)theme;
-	/*
-	SCD_Struct_UI69 data = MSHookIvar<SCD_Struct_UI69>([LTMPrefsManager sharedManager].data, "_rawData");
-	data.batteryCapacity = 0;
-	UIStatusBarComposedData *composedData = [[%c(UIStatusBarComposedData) alloc] initWithRawData:&data];
+	if(theme) [LTMPrefsManager sharedManager].theme = (NSMutableString*)theme;/*
+	SCD_Struct_UI69 *originalRawData = [[LTMPrefsManager sharedManager].data rawData];
+	SCD_Struct_UI69 *newRawData = originalRawData;
+	newRawData->batteryState = originalRawData->batteryState == 0 ? 1 : 0;
+	UIStatusBarComposedData *composedData = [[%c(UIStatusBarComposedData) alloc] initWithRawData:newRawData];
 	UIStatusBarComposedData *originalData = [LTMPrefsManager sharedManager].data;
 	[[LTMPrefsManager sharedManager].batteryView updateForNewData:composedData actions:0];
-	SEL selector = NSSelectorFromString(@"updateForNewData:actions:");
-	NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[[LTMPrefsManager sharedManager].batteryView methodSignatureForSelector:selector]];
-	[invocation setSelector:selector];
-	[invocation setTarget:[LTMPrefsManager sharedManager].batteryView];
-	[invocation setArgument:&(originalData) atIndex:2];
-	[invocation setArgument:0 atIndex:3];
-	[invocation performSelector:@selector(invoke) withObject:nil afterDelay:0];*/
-	/*
-	[composedData release];
-	[originalData release];*/
+	[[LTMPrefsManager sharedManager].batteryView updateForNewData:originalData actions:0];*/
 }
 
 %ctor {
@@ -35,18 +27,17 @@ static void notificationCallback(CFNotificationCenterRef center, void *observer,
 
 %hook UIStatusBarBatteryItemView
 
-
-/*
 - (BOOL)updateForNewData:(UIStatusBarComposedData*)data actions:(int)actions {
+	[LTMPrefsManager sharedManager].batteryView = self;
 	[LTMPrefsManager sharedManager].data = data;
 	return %orig;
-}*/
+}
+
 - (BOOL)_needsAccessoryImage {
 	return ([LTMPrefsManager sharedManager].enabled) ? NO : %orig;
 }
 
 - (id)contentsImage {
-	// if(![LTMPrefsManager sharedManager].batteryView) [LTMPrefsManager sharedManager].batteryView = self;
 	if([LTMPrefsManager sharedManager].enabled) {
 		int level = MSHookIvar<int>(self, "_capacity");
 		int state = MSHookIvar<int>(self, "_state");

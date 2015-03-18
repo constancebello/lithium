@@ -1,4 +1,4 @@
-/*typedef struct {
+typedef struct {
 	BOOL itemIsEnabled[25];
 	char timeString[64];
 	int gsmSignalStrengthRaw;
@@ -26,12 +26,13 @@
 	unsigned locationIconType : 1;
 	unsigned quietModeInactive : 1;
 	unsigned tetheringConnectionCount;
-} SCD_Struct_UI69;*/
+} SCD_Struct_UI69;
 
 @class UIStatusBarForegroundStyleAttributes, _UILegibilityView;
 
 @interface UIStatusBarComposedData : NSObject
-// - (id)initWithRawData:(const SCD_Struct_UI69*)data;
+- (SCD_Struct_UI69*)rawData;
+- (id)initWithRawData:(const SCD_Struct_UI69*)data;
 @end
 
 @interface UIStatusBarItemView : UIView
@@ -41,10 +42,10 @@
 - (int)legibilityStyle;
 
 @end
-/*
+
 @interface UIStatusBarBatteryItemView : UIStatusBarItemView
 - (bool)updateForNewData:(UIStatusBarComposedData*)data actions:(int)actions;
-@end*/
+@end
 
 @class UIImage;
 
@@ -68,9 +69,8 @@
 @property(nonatomic, retain) NSMutableString *script;
 @property(nonatomic) BOOL enabled;
 @property(nonatomic, retain) NSMutableString *theme;
-/*
 @property(nonatomic, retain) UIStatusBarBatteryItemView *batteryView;
-@property(nonatomic, retain) UIStatusBarComposedData *data;*/
+@property(nonatomic, retain) UIStatusBarComposedData *data;
 
 + (instancetype)sharedManager;
 

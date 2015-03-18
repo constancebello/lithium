@@ -4,12 +4,12 @@
 
 @interface LithiumListController : PSListController {
 	NSMutableArray *themes;
+	NSMutableDictionary *images;
 }
 
 @end
 
 @interface LTMListItemsController : PSListItemsController
-
 @end
 
 @interface PSListController (SettingsKit)
