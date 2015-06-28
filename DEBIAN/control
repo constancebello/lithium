@@ -3,7 +3,7 @@ Name: Lithium
 Depends: mobilesubstrate, preferenceloader, firmware (>= 7.0)
 Version: 0.9.4
 Architecture: iphoneos-arm
-Description: Lightweight battery icon themes (beta)
+Description: Lightweight battery icon themes
 Maintainer: Constance Bello <me@constancebello.dev>
 Author: Constance Bello <me@constancebello.dev>
 Section: Tweaks
