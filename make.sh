@@ -20,5 +20,5 @@ cp icon.png lithium/Library/PreferenceBundles/LithiumPreferences.bundle
 cp icon@2x.png lithium/Library/PreferenceBundles/LithiumPreferences.bundle
 cp icon@3x.png lithium/Library/PreferenceBundles/LithiumPreferences.bundle
 cp themes/* lithium/Library/Lithium/
-dpkg -b lithium
+dpkg-deb -b -Zgzip lithium
 rm -r lithium
