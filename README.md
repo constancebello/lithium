@@ -10,8 +10,6 @@ To build, symlink `/path/to/lithium/theos` to `/path/to/theos`, then run `./make
 
 ## Coverage
 
-- [iDownloadBlog]
-- [iPhone Hacks]
+[iDownloadBlog].
 
 [iDownloadBlog]: http://www.idownloadblog.com/2015/03/17/lithium-battery-theme/
-[iPhone Hacks]: http://www.iphonehacks.com/2015/03/lithium-is-a-brand-new-theming-tool-for-your-iphone-battery.html
